@@ -5,14 +5,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import axios from 'axios'
 
 //PAGES
-import LandingPage from './views/LandingPage';
-import BloodDetailPage from './views/BloodDetailPage';
-import DonorForm from './views/DonorForm';
-import MedCenter from './views/MedCenter';
+import LandingPage from './components/views/LandingPage';
+import BloodDetailPage from './components/views/BloodDetailPage';
+import DonorForm from './components/views/DonorForm';
+import MedCenter from './components/views/MedCenter';
 
 //PAGE SECTIONS
-import NavBar from './views/NavBar';
-import Footer from './views/Footer';
+import NavBar from './components/views/NavBar';
+import Footer from './components/views/Footer';
 
 
 
