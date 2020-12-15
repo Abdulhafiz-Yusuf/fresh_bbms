@@ -1,7 +1,12 @@
 {
-  // Auth Keys
+  // Auth configs
   "AUTH0_DOMAIN": "bbms-nigeria.au.auth0.com",
   "AUTH0_CLIENT_ID": "84zb4tkxeEeSPc56zyrQsVWE3NJ6bTz2",
-  "AUTH0_CLIENT_SECRET": "joUzOo8pYnjTW1XqVHNdOkpJtg-AVbthDjwVF3hCXwJtUNTcnD99Nsd4NmbThCW2"
-  // DB Keys
+  "AUTH0_CLIENT_SECRET": "joUzOo8pYnjTW1XqVHNdOkpJtg-AVbthDjwVF3hCXwJtUNTcnD99Nsd4NmbThCW2",
+  // DB config
+  "USER": "postgres",
+  "PASSWORD": "12345",
+  "PORT": "5432",
+  "HOST": "localhost",
+  "DATABASE": "bloodbank"
 }

@@ -1,14 +1,21 @@
-import
+/*
+  USER PROFILE SECTION
+*/
 
-//this endpoint will get the credentials from cloudinary_controller which will be signed. 
-// app.get('/api/upload', cloudinaryController.upload);
+const UserController = require('../controllers/Bloodcenter.Controller');
 
-//Read the user's session.
-app.get('/api/user-data', userController.readUserData);
 
-//Add a item to booking.
-app.post('/api/user-data/booking', userController.addTobooking);
+router.post('/api/posts/userprofiletodb', UserController.userprofiletodb)
 
-//Remove a item from the booking.
-// Use request parameter to remove item from booking since you are looking a specific item in booking.
-app.delete('/api/user-data/booking/:id', userController.removeFrombooking);
+router.get('/api/get/userprofilefromdb',)
+
+
+router.get('/api/get/userposts', UserController.userposts)
+
+// Retrieve another users profile from db based on username 
+router.get('/api/get/otheruserprofilefromdb', UserController.otheruserprofilefromdb);
+
+//Get another user's posts based on username
+router.get('/api/get/otheruserposts', UserController.otheruserposts);
+
+module.exports = router

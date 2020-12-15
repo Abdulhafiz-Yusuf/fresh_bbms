@@ -3,7 +3,7 @@
 
 #configs
 /client/src/auth_config.json
-
+/server/config.json
 # dependencies
 /client/node_modules
 /server/node_modules

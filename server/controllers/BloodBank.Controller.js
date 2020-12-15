@@ -1,23 +1,32 @@
-const BloodBank = require('../models/BloodBank.Model');
+const db = require('../models/db')
 
 module.exports = {
-    readAllBloodBanks(req, res) {
-        //When using mongoose can use a callback or a use a exec method to catch and respond to errors.
-        BloodBank.find({}).exec((err, BloodBanks) => {
-            if (err) console.log('Get BloodBank Mongoose Error------------------', err);
-            // console.log('BloodBanks-------------', BloodBanks);
-            res.status(200).send(BloodBanks);
-        });
-    },
-    readBloodBank(req, res) {
-        //Destruct the id from the endpoint url, to retrieve  a specific BloodBank.
-        const { id } = req.params;
-        //Copy and paste on of the BloodBank's id to the url when testing it.
-        //Use the findById to get a specific BloodBank.
-        BloodBank.findById(id).exec((err, BloodBank) => {
-            if (err) console.log('Get Single BloodBank Error---------------', err);
-            console.log('BloodBank--------------', BloodBank);
-            res.status(200).json({ BloodBank });
+
+    userprofiletodb(req, res, next) {
+        db.query(`SELECT * FROM bloodcenter 
+    ORDER BY date_created DESC`, (q_err, q_res) => {
+            res.json(q_res.rows)
         })
-    }
+    },
+
+    userprofilefromdb(req, res, next) {
+        const email = req.query.email
+        console.log(email)
+        db.query(`SELECT * FROM users
+              WHERE email=$1`, [email],
+            (q_err, q_res) => {
+                res.json(q_res.rows)
+            })
+    },
+    userposts(req, res, next) {
+        const user_id = req.query.user_id
+        console.log(user_id)
+        db.query(`SELECT * FROM posts
+              WHERE user_id=$1`, [user_id],
+            (q_err, q_res) => {
+                res.json(q_res.rows)
+            })
+    },
+
+
 }

@@ -18,13 +18,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//DB
+
+const db = require("./models");
+db.sequelize.sync();
+//In development, you may need to drop existing tables and re-sync database. Just use force: true as following code:
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
+
+
 //ROUTES
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const TestRouter = require('./routes/test')
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/test', TestRouter);
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
+});
+// const usersRouter = require('./routes/Users.Route');
+// const TestRouter = require('./routes/BloodBank.Route')
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
