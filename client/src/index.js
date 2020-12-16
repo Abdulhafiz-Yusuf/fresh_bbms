@@ -16,12 +16,11 @@ import config from "./config.json";
 ReactDOM.render(
 
   <Auth0Provider
-    domain={config.domain}
-    //domain={process.env.AUTH0_DOMAIN}
-    //  clientId={process.env.AUTH0_CLIENT_ID}
+    domain={config.AUTH0_DOMAIN}
     clientId={config.AUTH0_CLIENT_ID}
-    audience={config.audience}
-    redirectUri={window.location.origin}
+    redirectUri={config.REDUIRECT_URI}
+    //redirectUri={window.location.origin}
+    audience={config.AUDIENCE}
   >
     <Provider store={Store} >
       <App />

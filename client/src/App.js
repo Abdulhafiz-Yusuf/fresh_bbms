@@ -9,7 +9,7 @@ import LandingPage from './components/views/LandingPage';
 import BloodDetailPage from './components/views/BloodDetailPage';
 import DonorForm from './components/views/DonorForm';
 import MedCenter from './components/views/MedCenter';
-
+import UserDashBoard from './components/views/Dashboard/UserDashBoard';
 //PAGE SECTIONS
 import NavBar from './components/views/NavBar';
 import Footer from './components/views/Footer';
@@ -20,14 +20,12 @@ import Footer from './components/views/Footer';
 function App() {
 
 
-  const { isLoading, error } = useAuth0();
+  const { isLoading, error, user } = useAuth0();
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:9000/test')
-  //     .then(res => setApi(res.data))
-  //     .catch(err => console.log(err.message)
-  //     )
-  // }, [])
+  useEffect(() => {
+    if (user) { console.log(user) }
+    else { console.log('No user Log in') }
+  }, [user])
 
   if (isLoading) return <div>Loading.....</div>
 
@@ -46,6 +44,7 @@ function App() {
             <Route path="/blood_details" component={BloodDetailPage} />
             <Route path="/:userId/form" component={DonorForm} />
             <Route path="/med-center" component={MedCenter} />
+            <Route path="/callback" component={UserDashBoard} />
           </Switch>
         </div>
       </div>

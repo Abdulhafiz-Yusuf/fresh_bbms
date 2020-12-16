@@ -1,4 +1,4 @@
-const confi = require('../config.json');
+const config = require('../config.json');
 
 const Pool = require("pg").Pool;
 

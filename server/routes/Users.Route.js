@@ -2,20 +2,17 @@
   USER PROFILE SECTION
 */
 
-const UserController = require('../controllers/Bloodcenter.Controller');
+const UserController = require('../controllers/User.Controller');
 
 
-router.post('/api/posts/userprofiletodb', UserController.userprofiletodb)
+router.post('/userprofiletodb', UserController.userprofiletodb)
 
-router.get('/api/get/userprofilefromdb',)
-
-
-router.get('/api/get/userposts', UserController.userposts)
+router.get('/userprofilefromdb',)
 
 // Retrieve another users profile from db based on username 
-router.get('/api/get/otheruserprofilefromdb', UserController.otheruserprofilefromdb);
+router.get('/otheruserprofilefromdb', UserController.otheruserprofilefromdb);
 
 //Get another user's posts based on username
-router.get('/api/get/otheruserposts', UserController.otheruserposts);
+router.get('/otheruserposts', UserController.otheruserposts);
 
 module.exports = router

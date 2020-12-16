@@ -4,10 +4,10 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { Button } from 'reactstrap';
 
 const Auth0LogoutButton = () => {
-    const { Logout } = useAuth0();
+    const { logout } = useAuth0();
 
     return (
-        <Button className="border border-light" onClick={() => Logout()} color="danger "
+        <Button className="border border-light" onClick={() => logout()} color="danger "
             style={{ width: '130px' }}>
             <BsFillPersonFill />
             <p>Logout</p>

@@ -1,11 +1,9 @@
-import {
-    FETCH_BLOOD
-} from '../_actions/types';
+import * as ACTION_TYPES from '../_actions/types'
 
 
 export default function (state = {}, action) {
     switch (action.type) {
-        case FETCH_BLOOD:
+        case ACTION_TYPES.FETCH_BLOOD_CENTER:
             return { ...state, fetchedData: action.payload }
         default:
             return state;

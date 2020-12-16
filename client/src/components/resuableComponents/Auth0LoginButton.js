@@ -5,11 +5,15 @@ import { Button } from 'reactstrap';
 
 const LoginButton = () => {
 
-    const { loginWithRedirect } = useAuth0();
+    const { loginWithRedirect, user } = useAuth0();
+    const loginBtnHandle = () => {
+        loginWithRedirect()
+        console.log(user)
 
+    }
     return (
         <>
-            <Button className="border border-light" onClick={() => loginWithRedirect()} color="danger "
+            <Button className="border border-light" onClick={loginBtnHandle} color="danger "
                 style={{ width: '130px' }}>
                 <BsFillPersonFill />
                 <p>Login/Register</p>

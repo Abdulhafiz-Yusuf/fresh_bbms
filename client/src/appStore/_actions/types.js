@@ -1,7 +1,8 @@
-export const FETCH_BLOOD = 'fetch_blood';
+//USER ACTION.TYPES
+export const USER_PROFILE_TO_DB = 'register_user';
 
 
-export const SET_DB_PROFILE = "SET_DB_PROFILE"
+//BLOOD CENTER ACTION.TYPES
+export const FETCH_BLOOD_CENTER = 'FETCH_BLOOD_CENTER'
 
-export const REMOVE_DB_PROFILE = "REMOVE_DB_PROFILE"
 
