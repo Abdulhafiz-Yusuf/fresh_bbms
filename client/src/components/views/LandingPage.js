@@ -3,11 +3,9 @@ import CardList from '../resuableComponents/CardList'
 import { Col, Row, CardTitle, CardText } from 'reactstrap'
 
 const LandingPage = () => {
-
     return (
         <div className='mt-5 mb-5'>
             <div style={{ height: '20px' }}></div>
-
             <div className='mt-5 mb-5 shadow p-4'>
                 <CardTitle tag="h2"> Become A Blood Donor! Save A Life Today!!</CardTitle>
                 <CardText>

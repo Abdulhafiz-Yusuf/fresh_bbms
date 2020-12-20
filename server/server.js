@@ -36,8 +36,9 @@ app.get("/", (req, res) => {
 });
 // const usersRouter = require('./routes/Users.Route');
 const bloodcenterRoutes = require('./routes/BloodCenter.Route')
+const userRoutes = require('./routes/Users.Route')
 app.use('/bloodcenter', bloodcenterRoutes)
-app.use('/user', bloodcenterRoutes)
+app.use('/users', userRoutes)
 
 
 // catch 404 and forward to error handler

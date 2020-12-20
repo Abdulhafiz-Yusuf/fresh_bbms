@@ -1,8 +1,7 @@
 //DEPENDENCIES
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react'
-import axios from 'axios'
 
 //PAGES
 import LandingPage from './components/views/LandingPage';
@@ -13,37 +12,58 @@ import UserDashBoard from './components/views/Dashboard/UserDashBoard';
 //PAGE SECTIONS
 import NavBar from './components/views/NavBar';
 import Footer from './components/views/Footer';
+import { Card } from 'reactstrap';
+import RegCompletion from './components/views/Dashboard/RegCompletion';
 
 
 
 
-function App() {
-
+export default function App() {
 
   const { isLoading, error, user } = useAuth0();
 
   useEffect(() => {
-    if (user) { console.log(user) }
-    else { console.log('No user Log in') }
+    if (user) {
+
+      console.log(user)
+
+    }
+    else {
+
+      <div className='container d-flex justify-content-center align-items-center'>
+        <Card>
+          Loading ...
+  </Card>
+      </div>
+    }
   }, [user])
 
-  if (isLoading) return <div>Loading.....</div>
+  if (isLoading)
+    <div className='container d-flex justify-content-center align-items-center'>
+      <Card>
+        Loading ...
+  </Card>
+    </div>
 
   if (error) {
     console.log(error)
-    return <div> opps.....{error.message}</div>
+    return (<div> <Card color="danger">
+      <p>opps.....{error.message}</p>
+    </Card>
+    </div>)
   }
 
   return (
     <Router>
       <NavBar />
-      <div className="d-flex h-100">
+      <div className="d-flex h-75">
         <div className="container mt-5">
           <Switch>
             <Route path="/" exact component={LandingPage} />
             <Route path="/blood_details" component={BloodDetailPage} />
+            <Route path="/med-center" component={RegCompletion} />
             <Route path="/:userId/form" component={DonorForm} />
-            <Route path="/med-center" component={MedCenter} />
+            {/* <Route path="/med-center" component={MedCenter} /> */}
             <Route path="/callback" component={UserDashBoard} />
           </Switch>
         </div>
@@ -55,4 +75,4 @@ function App() {
   );
 }
 
-export default App;
+

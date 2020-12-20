@@ -14,27 +14,27 @@ const NavBar = (props) => {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <div className='bg-danger container fixed-top mb-5 shadow'>
+        <div className='bg-danger container fixed-top rounded mb-5 '>
 
             <Navbar color="danger" light expand="md">
                 <NavbarBrand to="/">reactstrap</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <ul class="nav">
-                            <li class="nav-item">
+                        <ul className="nav">
+                            <li className="nav-item">
                                 <Button color='danger'>
-                                    <Link class="nav-link active text-light" to="/">Home</Link>
+                                    <Link className="nav-link active text-light" to="/">Home</Link>
                                 </Button>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Button color='danger'>
-                                    <Link class="nav-link active text-light" to="/:userId/form">Become a Donor</Link>
+                                    <Link className="nav-link active text-light" to="/:userId/form">Become a Donor</Link>
                                 </Button>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Button color='danger '>
-                                    <Link class="nav-link active text-light" to="#">Medical Center</Link>
+                                    <Link className="nav-link active text-light" to="/med-center">Medical Center</Link>
                                 </Button>
                             </li>
 

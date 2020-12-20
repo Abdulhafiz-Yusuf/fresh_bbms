@@ -1,13 +1,14 @@
+const express = require('express');
+const router = express.Router()
 /*
   USER PROFILE SECTION
 */
 
 const UserController = require('../controllers/User.Controller');
 
-
-router.post('/userprofiletodb', UserController.userprofiletodb)
-
-router.get('/userprofilefromdb',)
+router.get('/checkIfUserExistInDB', UserController.checkIfUserExistinDB)
+router.get('/getuserFullInfo', UserController.getuserFullInfo)
+router.get('/regCompletion', UserController.regCompletion)
 
 // Retrieve another users profile from db based on username 
 router.get('/otheruserprofilefromdb', UserController.otheruserprofilefromdb);

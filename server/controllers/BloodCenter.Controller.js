@@ -1,5 +1,9 @@
 const db = require('../models/db')
 
+//=========================
+//  Bloodcenter controllers
+//=========================
+
 exports.readAllBloodcenter = async (req, res, next) => {
     db.query(`SELECT * FROM bloodcenter ORDER BY date_created DESC`)
         .then(result => {
