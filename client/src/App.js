@@ -2,17 +2,20 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react'
-
-//PAGES
-import LandingPage from './components/views/LandingPage';
-import BloodDetailPage from './components/views/BloodDetailPage';
-import DonorForm from './components/views/DonorForm';
-import MedCenter from './components/views/MedCenter';
-import UserDashBoard from './components/views/Dashboard/UserDashBoard';
-//PAGE SECTIONS
-import NavBar from './components/views/NavBar';
-import Footer from './components/views/Footer';
 import { Card } from 'reactstrap';
+//PAGES
+import LandingPage from './components/views/pages/LandingPage';
+import BloodDetailPage from './components/views/pages/BloodDetailPage';
+import DonorForm from './components/views/pages/DonorForm';
+import MedCenter from './components/views/pages/MedCenter';
+
+//PAGE SECTIONS
+import NavBar from './components/views/pages/NavBar';
+import Footer from './components/views/pages/Footer';
+
+
+//DASHBOARD
+import UserDashBoard from './components/views/Dashboard/UserDashBoard';
 import RegCompletion from './components/views/Dashboard/RegCompletion';
 
 

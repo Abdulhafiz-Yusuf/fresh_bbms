@@ -1,5 +1,5 @@
 import React from 'react'
-import CardList from '../resuableComponents/CardList'
+import CardList from '../../resuableComponents/CardList'
 import { Col, Row, CardTitle, CardText } from 'reactstrap'
 
 const LandingPage = () => {
