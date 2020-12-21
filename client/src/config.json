@@ -1,9 +1,0 @@
-{
-  "AUTH0_DOMAIN": "bbms-nigeria.au.auth0.com",
-  "AUTH0_CLIENT_ID": "84zb4tkxeEeSPc56zyrQsVWE3NJ6bTz2",
-  "AUTH0_CLIENT_SECRET": "joUzOo8pYnjTW1XqVHNdOkpJtg-AVbthDjwVF3hCXwJtUNTcnD99Nsd4NmbThCW2",
-  "AUDIENCE": "https://bbms-nigeria.au.auth0.com/api/v2/",
-  "REDUIRECT_URI": "http://localhost:3000/callback",
-  "USER_SERVER": "http://localhost:9000/user",
-  "BLOODCENTER_SERVER": "http://localhost:9000/blood"
-}
