@@ -2,7 +2,7 @@
 
 
 #configs
-/client/src/auth_config.json
+/client/src/config.json
 /server/config.json
 # dependencies
 /client/node_modules
