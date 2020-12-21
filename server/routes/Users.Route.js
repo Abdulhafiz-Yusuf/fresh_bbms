@@ -8,13 +8,6 @@ const router = express.Router()
 const UserController = require('../controllers/User.Controller');
 
 router.get('/checkIfUserExistIndb', UserController.checkIfUserExistIndb)
-router.get('/getuserFullInfo', UserController.getuserFullInfo)
 router.post('/regCompletion', UserController.regCompletion)
-
-// // // Retrieve another users profile from db based on username 
-// // router.get('/otheruserprofilefromdb', UserController.otheruserprofilefromdb);
-
-// // //Get another user's posts based on username
-// // router.get('/otheruserposts', UserController.otheruserposts);
-
+// router.get('/getuserFullInfo', UserController.getuserFullInfo)
 module.exports = router
