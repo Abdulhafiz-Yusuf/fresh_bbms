@@ -1,9 +1,10 @@
 
 const express = require('express');
 const router = express.Router()
-// /*
-//   USER PROFILE SECTION
-// */
+
+//==========================
+//  USER ROUTES
+//==========================
 
 const UserController = require('../controllers/User.Controller');
 
