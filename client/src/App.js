@@ -1,5 +1,5 @@
 //DEPENDENCIES
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react'
 import { Card } from 'reactstrap';
@@ -23,57 +23,38 @@ import RegCompletion from './components/views/Dashboard/RegCompletion';
 
 export default function App() {
 
-  const { isLoading, error, user } = useAuth0();
-
-  useEffect(() => {
-    if (user) {
-
-      console.log(user)
-
-    }
-    else {
-
-      <div className='container d-flex justify-content-center align-items-center'>
-        <Card>
-          Loading ...
-  </Card>
-      </div>
-    }
-  }, [user])
-
-  if (isLoading)
-    <div className='container d-flex justify-content-center align-items-center'>
+  const { isLoading, error } = useAuth0();
+  isLoading &&
+    <div className='container d-flex justify-content-center align-items-center h-75'>
       <Card>
-        Loading ...
-  </Card>
+        <h2>Loading .... </h2>
+      </Card>
     </div>
 
-  if (error) {
-    console.log(error)
-    return (<div> <Card color="danger">
-      <p>opps.....{error.message}</p>
-    </Card>
-    </div>)
-  }
 
-  return (
+  error &&
+    < div className='container d-flex justify-content-center align-items-center h-75' >
+      <Card>
+        <h2>{error} </h2>
+      </Card>
+    </div >
+
+  return (<>
+
     <Router>
       <NavBar />
-      <div className="d-flex h-75">
-        <div className="container mt-5">
-          <Switch>
-            <Route path="/" exact component={LandingPage} />
-            <Route path="/blood_details" component={BloodDetailPage} />
-            <Route path="/med-center" component={RegCompletion} />
-            <Route path="/:userId/form" component={DonorForm} />
-            {/* <Route path="/med-center" component={MedCenter} /> */}
-            <Route path="/callback" component={UserDashBoard} />
-          </Switch>
-        </div>
-      </div>
+      <Switch>
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/blood_details" component={BloodDetailPage} />
+        <Route path="/testPage" component={RegCompletion} />
+        <Route path="/:userId/form" component={DonorForm} />
+        <Route path="/med-center" component={MedCenter} />
+        <Route path="/callback" component={UserDashBoard} />
+      </Switch>
       <Footer />
     </Router>
 
+  </>
 
   );
 }

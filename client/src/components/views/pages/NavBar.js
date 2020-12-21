@@ -17,7 +17,7 @@ const NavBar = (props) => {
         <div className='bg-danger container fixed-top rounded mb-5 '>
 
             <Navbar color="danger" light expand="md">
-                <NavbarBrand to="/">reactstrap</NavbarBrand>
+                <NavbarBrand to="/">9jaBlood</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
@@ -37,7 +37,11 @@ const NavBar = (props) => {
                                     <Link className="nav-link active text-light" to="/med-center">Medical Center</Link>
                                 </Button>
                             </li>
-
+                            <li className="nav-item">
+                                <Button color='danger '>
+                                    <Link className="nav-link active text-light" to='/testPage'>Testing Page</Link>
+                                </Button>
+                            </li>
                         </ul>
                     </Nav>
                     {!isAuthenticated ? <LoginButton /> :

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-//import NaijaStates from 'naija-state-local-government';
 import { NaijaStates, NaijaLGA, bloodGroup } from './loc'
-//import NaijaLGA from './loc'
+import { useDispatch } from "react-redux";
+import { completeRegistration } from '../../../appStore/_actions/userAction'
 
 export default function RegCompletion(props) {
-
+    const dispatch = useDispatch();
     const [profile, setprofile] = useState({
         // email: props.email,
         // email_verified: props.email_verified,
@@ -26,12 +26,25 @@ export default function RegCompletion(props) {
         })
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const dataToSubmit = {
+            email: profile.email,
+            email_verified: profile.email_verified,
+            last_login: profile.last_login,
+            username: profile.username,
+            phone: profile.phone,
+            user_loc_state: profile.user_loc_state,
+            loc_lga: profile.loc_lga,
+            donor: profile.donor,
+            bg: profile.bg
 
+        }
+        dispatch(completeRegistration(dataToSubmit))
 
-
-
+    }
     return (
-        <>
+        <div>
             <div style={{ height: '100px' }}></div>
             <Card className='container w-50 shadow-lg p-3'>
                 <div className='d-flex justify-content-lg-center '>
@@ -84,14 +97,14 @@ export default function RegCompletion(props) {
                         </Input>
                     </FormGroup>
                     <div className='d-flex justify-content-lg-center '>
-                        <Button >Submit</Button>
+                        <Button onClick={onSubmit}>Submit</Button>
                     </div>
 
                 </Form>
 
             </Card >
             <div style={{ height: '20px' }}></div>
-        </>
+        </div>
     )
 }
 

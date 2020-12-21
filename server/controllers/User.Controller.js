@@ -35,15 +35,15 @@ export function getuserFullInfo(req, res, next) {
 
 export function regCompletion(req, res, next) {
     const values = [
-        req.body.profile.username,
-        req.body.profile.email,
-        req.body.profile.email_verified,
-        req.body.profile.last_login,
-        req.body.profile.phone,
-        req.body.profile.user_loc_state,
-        req.body.profile.loc_lga,
-        req.body.profile.donor,
-        req.body.profile.bg
+        req.body.data.username,
+        req.body.data.email,
+        req.body.data.email_verified,
+        req.body.data.last_login,
+        req.body.data.phone,
+        req.body.data.user_loc_state,
+        req.body.data.loc_lga,
+        req.body.data.donor,
+        req.body.data.bg
     ]
     pool.query(`INSERT INTO 
     users(username,email,email_verified,date_created,last_login,phone,user_loc_state,loc_lga,donor,bg)
@@ -51,14 +51,11 @@ export function regCompletion(req, res, next) {
               ON CONFLICT DO NOTHING`, values
     )
         .then(q_res => {
-            // Send books extracted from database in response
+            // Send user extracted from database in response
             console.log(result)
             res.json(q_res.rows)
         })
-        .catch(q_err => {
-            // Send a error message in response
-            res.status(500).send({ Error: q_err.message })
-        })
+        .catch(err => res.json(err)) //DB ERROR
 
 }
 
