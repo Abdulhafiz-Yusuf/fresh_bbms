@@ -1,51 +1,65 @@
 import React, { useState } from 'react'
 import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { NaijaStates, NaijaLGA, bloodGroup } from './loc'
+import { NaijaStates, trueorfalse, NaijaLGA, bloodGroup } from './data'
 import { useDispatch } from "react-redux";
 import { completeRegistration } from '../../../appStore/_actions/userAction'
 
+
+/*==========================
+REGISTRATION COMPLETION PAGE
+=============================*/
+
 export default function RegCompletion(props) {
+
     const dispatch = useDispatch();
-    const [profile, setprofile] = useState({
-        // email: props.email,
-        // email_verified: props.email_verified,
-        // last_login: props.updated_last,
+    const [profile, setProfile] = useState({
+        email: props.email,
+        email_verified: props.email_verified,
+        last_login: props.updated_last,
         username: '',
         phone: '',
         user_loc_state: 'Abia',
-        loc_lga: '',
+        loc_lga: NaijaLGA['Abia'][0],
         donor: '',
-        bg: ''
+        bg: 'A - positive(A +)'
     })
     let LGAs = NaijaLGA[profile.user_loc_state]
     const handleChange = (e) => {
         const value = e.target.value
-        setprofile({
+        setProfile({
             ...profile,
             [e.target.name]: value
         })
+        console.log(value)
     }
-
     const onSubmit = (e) => {
         e.preventDefault()
         const dataToSubmit = {
-            email: profile.email,
-            email_verified: profile.email_verified,
-            last_login: profile.last_login,
+            email: 'me@gmail.com',
+            email_verified: false,
             username: profile.username,
             phone: profile.phone,
             user_loc_state: profile.user_loc_state,
             loc_lga: profile.loc_lga,
             donor: profile.donor,
             bg: profile.bg
-
         }
-        dispatch(completeRegistration(dataToSubmit))
-
+        // dispatch(completeRegistration(dataToSubmit))
+        if (dataToSubmit.username === '' || dataToSubmit.phone === '') {
+            alert('Field cannot be empty')
+        }
+        else {
+            console.log(dataToSubmit)
+            dispatch(completeRegistration(dataToSubmit))
+                .then(response => {
+                    if (response.payload.success)
+                        alert('Congratulations! You have successfully registered with 9jaBloodbank')
+                })
+        }
     }
     return (
         <div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '130px' }}></div>
             <Card className='container w-50 shadow-lg p-3'>
                 <div className='d-flex justify-content-lg-center '>
                     <h2>Registration Completion</h2>
@@ -81,23 +95,26 @@ export default function RegCompletion(props) {
 
                     <FormGroup>
                         <Label for="exampleSelect">Will you like to be a Donor</Label>
-                        <Input type="select" name="select" onChange={handleChange}>
-                            <option>Yes</option>
-                            <option>No</option>
+                        <Input type="select" name="donor" value={profile.donor} onChange={handleChange}>
+                            {trueorfalse.map((item, index) => (
+                                <option key={index} value={item.value}> {item.key}</option>
+                            ))
+                            }
+
                         </Input>
                     </FormGroup>
 
                     <FormGroup>
                         <Label for="bg">Blood Group</Label>
-                        <Input type="select" name="select" value={profile.loc_lga} onChange={handleChange}>
+                        <Input type="select" name="bg" value={profile.bg} onChange={handleChange}>
                             {bloodGroup.map((bg, index) => (
-                                <option key={index} value={bg}> {bg}</option>
+                                <option key={index} value={bg}>{bg}</option>
                             ))
                             }
                         </Input>
                     </FormGroup>
                     <div className='d-flex justify-content-lg-center '>
-                        <Button onClick={onSubmit}>Submit</Button>
+                        <Button className='' onClick={onSubmit}>Submit</Button>
                     </div>
 
                 </Form>

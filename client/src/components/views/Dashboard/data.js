@@ -1,3 +1,6 @@
+export const trueorfalse = [
+    { key: 'Yes', value: true },
+    { key: 'No', value: false },]
 export const bloodGroup = ['A - positive(A +)', 'A - negative(A -)', 'B - positive(B +)', 'B - negative(B -)',
     'AB - positive(AB +)', 'AB - negative(AB -)', 'O - positive(O +)', 'O - negative(O -)']
 export const NaijaStates =

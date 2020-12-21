@@ -32,13 +32,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //ROUTES
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to 9ja Bloodbank server" });
 });
-// const usersRouter = require('./routes/Users.Route');
 const bloodcenterRoutes = require('./routes/BloodCenter.Route')
 const userRoutes = require('./routes/Users.Route')
-app.use('/bloodcenter', bloodcenterRoutes)
-app.use('/users', userRoutes)
+// app.use('/bloodcenter', bloodcenterRoutes)
+app.use('/user', userRoutes)
 
 
 // catch 404 and forward to error handler

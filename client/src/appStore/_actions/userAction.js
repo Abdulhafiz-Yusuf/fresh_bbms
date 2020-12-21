@@ -11,10 +11,11 @@ import { USER_SERVER } from '../../config.json';
 export function checkifUserExist(user) {
     const request = axios.get(`${USER_SERVER}/checkIfUserExistInDB`, user)
         .then(response => {
-            return {
-                type: ACTION_TYPES.CHECK_USER_EXIST,
-                payload: response
-            }
+            if (response.data.userExist)
+                return {
+                    type: ACTION_TYPES.USER_EXIST,
+                    payload: { userExist: response.data.userExist, user: response.data.user }
+                }
         })
         .catch(err => {
             return {
@@ -25,23 +26,28 @@ export function checkifUserExist(user) {
     return request
 }
 
-export function getUserFullInfo(user) {
-    const request = axios.get(`${USER_SERVER}/getuserFullInfo`, user)
-        .then(response => response);
+export function fullUserInfoFromDb(user) {
     return {
         type: ACTION_TYPES.GET_USER_FULL_INFO,
-        payload: request
+        payload: user
     }
 }
 export function completeRegistration(dataToSubmit) {
-    //Collection complete user info from complete registration page and post to db
-    const request = axios.post(`${USER_SERVER}/regCompletion`, dataToSubmit)
-        .then(response => response);
-    return {
-        type: ACTION_TYPES.GET_USER_FULL_INFO,
-        payload: request
-
-    }
+    //Collect complete user info from 'complete registration page' then post to db and return full user info
+    const request = axios.post('http://localhost:9000/user/regCompletion', dataToSubmit)
+        .then(response => {
+            return ({
+                type: ACTION_TYPES.GET_USER_FULL_INFO,
+                payload: { user: response.data.user, success: response.data.success }
+            })
+        })
+        .catch(err => {
+            return {
+                type: ACTION_TYPES.ERROR_CATCH,
+                payload: err.message
+            }
+        })
+    return request
 }
 
 export function clearError() {

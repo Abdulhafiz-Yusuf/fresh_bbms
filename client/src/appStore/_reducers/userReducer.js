@@ -11,8 +11,8 @@ const initialState = {
 
 export default function UserReducer(state = initialState, action) {
     switch (action.type) {
-        case ACTION_TYPES.CHECK_USER_EXIST:
-            return { ...state, userExist: action.payload.userExist }
+        case ACTION_TYPES.USER_EXIST:
+            return { ...state, userExist: action.payload.userExist, user: action.payload.user }
         case ACTION_TYPES.GET_USER_FULL_INFO:
             return { ...state, user: action.payload.user }
         // case ACTION_TYPES.USER_FROM_DB:

@@ -20,7 +20,9 @@ import RegCompletion from './components/views/Dashboard/RegCompletion';
 
 
 
-
+/*=====
+APP.JS
+=======*/
 export default function App() {
 
   const { isLoading, error } = useAuth0();

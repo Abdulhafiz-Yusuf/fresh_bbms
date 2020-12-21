@@ -1,19 +1,20 @@
+
 const express = require('express');
 const router = express.Router()
-/*
-  USER PROFILE SECTION
-*/
+// /*
+//   USER PROFILE SECTION
+// */
 
 const UserController = require('../controllers/User.Controller');
 
-router.get('/checkIfUserExistInDB', UserController.checkIfUserExistinDB)
+router.get('/checkIfUserExistIndb', UserController.checkIfUserExistIndb)
 router.get('/getuserFullInfo', UserController.getuserFullInfo)
-router.get('/regCompletion', UserController.regCompletion)
+router.post('/regCompletion', UserController.regCompletion)
 
-// Retrieve another users profile from db based on username 
-router.get('/otheruserprofilefromdb', UserController.otheruserprofilefromdb);
+// // // Retrieve another users profile from db based on username 
+// // router.get('/otheruserprofilefromdb', UserController.otheruserprofilefromdb);
 
-//Get another user's posts based on username
-router.get('/otheruserposts', UserController.otheruserposts);
+// // //Get another user's posts based on username
+// // router.get('/otheruserposts', UserController.otheruserposts);
 
 module.exports = router

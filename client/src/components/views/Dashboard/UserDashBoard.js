@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch } from "react-redux";
-import { checkifUserExist, getUserFullInfo } from '../../../appStore/_actions/userAction'
+import { checkifUserExist, fullUserInfoFromDb } from '../../../appStore/_actions/userAction'
 import RegCompletion from "./RegCompletion";
 import Profile from "./Profile";
 import Notice from "../../resuableComponents/Notice";
@@ -31,7 +31,8 @@ export default function UserDashBoard() {
             dispatch(checkifUserExist(user))
                 .then(response => {
                     if (response.payload.userExist) {
-                        dispatch(getUserFullInfo(user))
+                        const fullUser = response.payload.user
+                        dispatch(fullUserInfoFromDb(fullUser))
                     }
                 })
         }
