@@ -1,7 +1,0 @@
-{
-  "USER": "postgres",
-  "PASSWORD": "newPassword",
-  "PORT": "5432",
-  "HOST": "localhost",
-  "DATABASE": "bloodbank"
-}
