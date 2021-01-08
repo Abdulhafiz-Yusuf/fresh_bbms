@@ -13,7 +13,7 @@ const LoginButton = () => {
     }
     return (
         <>
-            <Button className="border border-light" onClick={loginBtnHandle} color="danger "
+            <Button className="border border-light text-light font-weight-bold" onClick={loginBtnHandle} color=" "
                 style={{ width: '130px' }}>
                 <BsFillPersonFill />
                 <p>Login/Register</p>

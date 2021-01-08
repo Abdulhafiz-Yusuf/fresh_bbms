@@ -1,12 +1,17 @@
 import React from 'react'
+import Card from './Card'
 
-const CardList = () => {
+const CardList = ({ bgData }) => {
 
     return (
-        <div>
-            CardList
-        </div>
+        bgData.map((bgData, index) => {
+            return (
+                <Card bgData={bgData} />
+            )
+        }
+        )
     )
+
 }
 
 export default CardList

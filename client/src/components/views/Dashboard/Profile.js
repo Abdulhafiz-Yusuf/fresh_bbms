@@ -1,28 +1,48 @@
-import React from 'react'
-
-function Profile(props) {
+import React, { useEffect } from 'react'
+import { Card } from 'reactstrap'
+function Profile({ user }) {
+    useEffect(() => {
+        console.log(user)
+    }, [user])
     return (
-        <div>
+        <div className='w-100 d-flex flex-row justify-content-center align-items-center' >
+            <Card className='w-100 m-1'>
+                <h2 className='text-danger text-center mb-3 font-weight-bold'> Profile </h2>
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25'><p className='ml-5'> First Name:  </p> </div>
+                    <div> <p className='text-uppercase font-weight-bold'>{user.f_name}</p></div>
+                    <hr />
+                </div>
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25 '><p className='ml-5'> Last Name:  </p> </div>
+                    <div> <p className='text-uppercase font-weight-bold '>{user.l_name}</p></div>
+                    <hr />
+                </div>
 
-            <div className="row align-items-center profile-header">
-                <div className="col-md-2 mb-3">
-                    <img
-                        src={props.user.picture}
-                        alt="Profile"
-                        className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-                    />
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25 '><p className='ml-5'> Phone:  </p>  </div>
+                    <div> <p className='text-uppercase font-weight-bold '>{user.phone}</p> </div>
                 </div>
-                <div className="col-md text-center text-md-left">
-                    <h2>{props.user.name}</h2>
-                    <p className="lead text-muted">{props.user.email}</p>
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25 '><p className='ml-5'> State of Resident:  </p>  </div>
+                    <div> <p className=' text-uppercase font-weight-bold '>{user.user_loc_state}</p> </div>
                 </div>
-            </div>
-            <div className="row">
-                <pre className="col-12 text-light bg-dark p-4">
-                    {JSON.stringify(props.user, null, 2)}
-                </pre>
-            </div>
-        </div>
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25 '><p className='ml-5'> L.G.A: </p>  </div>
+                    <div> <p className=' text-uppercase font-weight-bold '>{user.loc_lga}</p> </div>
+                </div>
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25 '><p className='ml-5'> Blood Group:  </p>  </div>
+                    <div> <p className='text-uppercase font-weight-bold '>{user.bg}</p> </div>
+                </div>
+                <div className='d-flex w-100 text-danger border-bottom'>
+                    <div className='w-25 '><p className='ml-5'> Are you a Donor:  </p>  </div>
+                    <div> <p className='font-weight-bold '>{user.donor}</p> </div>
+                </div>
+
+            </Card >
+
+        </div >
     )
 }
 

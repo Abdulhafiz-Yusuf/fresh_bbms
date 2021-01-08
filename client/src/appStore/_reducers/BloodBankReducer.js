@@ -1,10 +1,18 @@
 import * as ACTION_TYPES from '../_actions/types'
 
+const initialState = {
+    bgDetail: [],
+    bcDetail: [],
+    Error: "Error Availabe",
+
+}
 
 export default function BloodBankReducer(state = {}, action) {
     switch (action.type) {
-        case ACTION_TYPES.FETCH_BLOOD_CENTER:
-            return { ...state, fetchedData: action.payload }
+        case ACTION_TYPES.FETCH_BLOOD_GROUP:
+            return { ...state, bg: action.payload }
+        case ACTION_TYPES.FETCH_BLOOD_GROUP_BY_ID:
+            return { ...state, bcDetail: action.payload.bc, bgDetail: action.payload.bg }
         default:
             return state;
     }

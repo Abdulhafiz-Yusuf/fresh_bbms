@@ -7,11 +7,11 @@ export const USER_FROM_DB = 'userfromdb'
 export const GET_USER_FULL_INFO = 'getuserfullinfo'
 export const ERROR_CATCH = 'errorcatch'
 export const CLEAR_ERROR = 'clearerror'
-
+export const VIEWPAGE = 'viewpage'
 
 //=========================
 //  bloodcenter types
 //=========================
-export const FETCH_BLOOD_CENTER = 'FETCH_BLOOD_CENTER'
-
+export const FETCH_BLOOD_GROUP = 'fetch_blood_group'
+export const FETCH_BLOOD_GROUP_BY_ID = 'fetch_blood_group_by_id'
 

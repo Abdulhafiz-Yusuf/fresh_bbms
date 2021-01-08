@@ -56,3 +56,9 @@ export function clearError() {
         payload: undefined
     })
 }
+export function viewPageAction(page) {
+    return ({
+        type: ACTION_TYPES.VIEWPAGE,
+        payload: page
+    })
+}

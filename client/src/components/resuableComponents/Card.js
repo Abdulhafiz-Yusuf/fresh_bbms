@@ -1,20 +1,21 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap';
-
-const card = (props) => {
+import { CardTitle, Button } from 'reactstrap';
+import { Link } from 'react-router-dom'
+const CardComp = ({ bgData }) => {
     return (
-        <div>
-            <Card>
-                <CardImg top width="100%" src='props.image' alt="card image" />
-                <CardBody>
-                    <CardTitle tag="h5">prop.title</CardTitle>
+        <Link className="nav-link active text-light" to={`/blood_details/${bgData.bg_id}`} >
+            <Button color='light' className='m-3 d-flex flex-column align-items-center border border-danger shadow' style={{ width: '170px' }}>
 
-                    <CardText>props.description</CardText>
-                    <Button>Button</Button>
-                </CardBody>
-            </Card>
-        </div>
+                <CardTitle className='d-flex border rounded-circle justify-content-center align-items-center bg-danger m-1' style={{ width: '100px', height: '100px' }}>
+                    <h1 className='text-center font-weight-bolder text-light' style={{ fontSize: '45px' }}>{bgData.bg}<sup>{bgData.rhd}</sup></h1>
+                </CardTitle>
+                <div className='text-center'> Available Quantity: <h2>{bgData.blood_qty} pints</h2> </div>
+            </Button >
+
+        </Link >
+
+
     );
 };
 
-export default card;
+export default CardComp;

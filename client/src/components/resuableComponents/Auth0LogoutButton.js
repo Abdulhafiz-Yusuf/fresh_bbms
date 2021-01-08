@@ -7,7 +7,7 @@ const Auth0LogoutButton = () => {
     const { logout } = useAuth0();
 
     return (
-        <Button className="border border-light" onClick={() => logout()} color="danger "
+        <Button className="border border-light text-light" onClick={() => logout()} color=" "
             style={{ width: '130px' }}>
             <BsFillPersonFill />
             <p>Logout</p>

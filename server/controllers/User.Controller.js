@@ -1,4 +1,4 @@
-const pool = require('../models/db');
+const db = require('../models/db');
 
 
 //=========================
@@ -14,7 +14,7 @@ exports.checkIfUserExistIndb = (req, res) => {
     */
     const email = req.body.user.email;
     console.log(email)
-    pool.query(`SELECT * FROM users
+    db.query(`SELECT * FROM users
               WHERE email=$1`, [email])
         .then(q_res => {
             if (!q_res.rows) res.status(200).send({ userExist: false, user: 'User does not exist' });   //USER DOEST NOT EXIST
@@ -36,7 +36,7 @@ exports.regCompletion = (req, res, next) => {
         req.body.bg
     ]
     const username = req.body.username;
-    pool.query(`INSERT INTO 
+    db.query(`INSERT INTO 
     users(username, email, email_verified, phone, user_loc_state, loc_lga, donor, bg, date_created, last_login)
               VALUES($1, $2, $3, $4, $5, $6, $7, $8, NOW(), NOW())
         ON CONFLICT DO NOTHING`, values)
@@ -45,7 +45,7 @@ exports.regCompletion = (req, res, next) => {
                 // Send user extracted from database in response
                 //res.status(200).send({ success: true })
                 console.log(username)
-                pool.query(`SELECT * FROM users WHERE username=$1`, [username])
+                db.query(`SELECT * FROM users WHERE username=$1`, [username])
                     .then(q_res => {
                         res.status(200).send({
                             success: true,
@@ -65,7 +65,7 @@ exports.regCompletion = (req, res, next) => {
 // exports.userposts = async (req, res, next) => {
 //     const user_id = req.query.user_id
 //     console.log(user_id)
-//     pool.query(`SELECT * FROM posts
+//     db.query(`SELECT * FROM posts
 //               WHERE user_id=$1`, [user_id],
 //         (q_err, q_res) => {
 //             res.json(q_res.rows)
@@ -75,7 +75,7 @@ exports.regCompletion = (req, res, next) => {
 // exports.otheruserprofilefromdb = async (req, res, next) => {
 //     // const email = [ "%" + req.query.email + "%"]
 //     const username = String(req.query.username)
-//     pool.query(`SELECT * FROM users
+//     db.query(`SELECT * FROM users
 //               WHERE username = $1`,
 //         [username], (q_err, q_res) => {
 //             res.json(q_res.rows)
@@ -83,7 +83,7 @@ exports.regCompletion = (req, res, next) => {
 // }
 // exports.otheruserposts = async (req, res, next) => {
 //     const username = String(req.query.username)
-//     pool.query(`SELECT * FROM posts
+//     db.query(`SELECT * FROM posts
 //               WHERE author = $1`,
 //         [username], (q_err, q_res) => {
 //             res.json(q_res.rows)

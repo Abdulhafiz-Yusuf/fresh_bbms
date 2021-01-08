@@ -38,6 +38,7 @@ const bloodcenterRoutes = require('./routes/BloodCenter.Route')
 const userRoutes = require('./routes/Users.Route')
 // app.use('/bloodcenter', bloodcenterRoutes)
 app.use('/user', userRoutes)
+app.use('/blood', bloodcenterRoutes)
 
 
 // catch 404 and forward to error handler

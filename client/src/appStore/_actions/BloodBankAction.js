@@ -1,12 +1,40 @@
 import axios from 'axios';
-import { FETCH_BLOOD } from './types';
-import { BLOODBANK_SERVER } from './Config';
+import * as ACTION_TYPES from './types';
+import { BLOODCENTER_SERVER } from '../../config.json';
 
 export function fetchBlood() {
-    const request = axios.get(`${BLOODBANK_SERVER}/`)
-        .then(response => response.data);
-    return {
-        FETCH_BLOOD,
-        payload: request
-    }
+    const request = axios.get(`${BLOODCENTER_SERVER}/`)
+        .then(response => {
+            if (response.data)
+                return {
+                    type: ACTION_TYPES.FETCH_BLOOD_GROUP,
+                    payload: response.data
+                }
+        })
+        .catch(err => {
+            return {
+                type: ACTION_TYPES.ERROR_CATCH,
+                payload: err.response.data.Error
+            }
+        })
+    return request
+}
+
+
+export function fetchBloodbyId(bgId) {
+    const request = axios.get(`${BLOODCENTER_SERVER}/blood_by_id?id=${bgId}`)
+        .then(response => {
+            if (response.data)
+                return {
+                    type: ACTION_TYPES.FETCH_BLOOD_GROUP_BY_ID,
+                    payload: response.data
+                }
+        })
+        .catch(err => {
+            return {
+                type: ACTION_TYPES.ERROR_CATCH,
+                payload: err.response.data.Error
+            }
+        })
+    return request
 }

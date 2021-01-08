@@ -1,3 +1,68 @@
+export const bgData = [
+    {
+        id: 1,
+        bg: 'A',
+        pn: '+',
+        qty: 40
+    }
+]
+
+export const testBookingData = [
+    {
+        bg: 'O',
+        pn: '+',
+        blood_center_id: '1',
+        blood_center_name: 'National Blood Center Abuja',
+        location: 'FCT, Abuja',
+        qty: '20',
+        payment_status: 'No',
+        date_created: '12-12-2020',
+    },
+    {
+        bg: 'O',
+        pn: '+',
+        blood_center_id: '1',
+        blood_center_name: 'National Blood Center Abuja',
+        location: 'FCT, Abuja',
+        qty: '20',
+        payment_status: 'No',
+        date_created: '12-12-2020',
+    },
+    {
+        bg: 'O',
+        pn: '+',
+        blood_center_id: '1',
+        blood_center_name: 'National Blood Center Abuja',
+        location: 'FCT, Abuja',
+        qty: '20',
+        payment_status: 'No',
+        date_created: '12-12-2020',
+    },
+    {
+        bg: 'O',
+        pn: '+',
+        blood_center_id: '1',
+        blood_center_name: 'National Blood Center Abuja',
+        location: 'FCT, Abuja',
+        qty: '20',
+        payment_status: 'No',
+        date_created: '12-12-2020',
+    }
+
+]
+export const testUserData = {
+    users_id: 1,
+    username: 'Yushaf',
+    f_name: 'Abdulhafiz',
+    l_name: 'Yusuf',
+    date_created: '12-12-2020',
+    last_login: '12-12-2020',
+    phone: '08132652465',
+    user_loc_state: 'Kaduna',
+    loc_lga: 'Kaduna North',
+    donor: 'Yes',
+    bg: 'O - positive(O +)'
+}
 export const trueorfalse = [
     { key: 'Yes', value: true },
     { key: 'No', value: false },]
