@@ -16,7 +16,6 @@ import Footer from './components/views/pages/sections/Footer';
 
 //DASHBOARD
 import UserDashBoard from './components/views/Dashboard/UserDashBoard';
-import RegCompletion from './components/views/Dashboard/RegCompletion';
 
 
 

@@ -21,8 +21,8 @@ export function fetchBlood() {
 }
 
 
-export function fetchBloodbyId(bgId) {
-    const request = axios.get(`${BLOODCENTER_SERVER}/blood_by_id?id=${bgId}`)
+export async function fetchBloodbyId(bgId) {
+    const request = await axios.get(`${BLOODCENTER_SERVER}/blood_by_id?id=${bgId}`)
         .then(response => {
             if (response.data)
                 return {

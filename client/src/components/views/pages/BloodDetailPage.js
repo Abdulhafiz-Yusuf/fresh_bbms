@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBloodbyId } from '../../../appStore/_actions/BloodBankAction';
 
 
-const BloodDetailPage = (props) => {
+
+export default function BloodDetailPage(props) {
     /*
     TASK
     ====
@@ -12,32 +13,26 @@ const BloodDetailPage = (props) => {
     2.  Use bgDetail.bg to fetch bgDetailPage Data where bg === req.body.bgDetail.bg
     3.  Display bgDetailPage Data in tables
     */
-
     const dispatch = useDispatch()
-
     const bgDetail = useSelector(state => state.BloodBankReducer.bgDetail);
     const bcDetail = useSelector(state => state.BloodBankReducer.bcDetail);
     const bgId = props.match.params.bgId;
-    // const [bgDetail, setBgDetail] = useState([])
-    // const [bcDetail, setBcDetail] = useState([])
+
+    //const [bgDetail, setBgDetail] = useState([])
 
     useEffect(() => {
-        dispatch(fetchBloodbyId(bgId))
-            .then(response => {
-                console.log(response.payload)
-                // setBgDetail(response.payload.bg)
-                // setBcDetail(response.payload.bc)
-                console.log(bgDetail)
-                console.log(bcDetail)
-            })
+        async function asyncFunction() {
+            await dispatch(fetchBloodbyId(bgId))
+        }
+        asyncFunction().
+            then(res =>
+                console.log({ bg: bgDetail, bc: bcDetail })
+            )
+    }, [dispatch])
 
-    }, [])
 
 
     return (
-
-
-
         < div className=' container mt-5 mb-5' >
             <div style={{ height: '100px' }}></div>
             {
@@ -83,5 +78,3 @@ const BloodDetailPage = (props) => {
         </div >
     )
 }
-
-export default BloodDetailPage

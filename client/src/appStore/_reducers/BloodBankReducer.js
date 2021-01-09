@@ -7,7 +7,7 @@ const initialState = {
 
 }
 
-export default function BloodBankReducer(state = {}, action) {
+export default function BloodBankReducer(state = initialState, action) {
     switch (action.type) {
         case ACTION_TYPES.FETCH_BLOOD_GROUP:
             return { ...state, bg: action.payload }
