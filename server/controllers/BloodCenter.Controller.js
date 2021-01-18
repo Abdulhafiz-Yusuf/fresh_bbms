@@ -16,27 +16,45 @@ exports.readAllBloodGroup = (req, res,) => {
             res.status(500).send({ Error: q_err.message }) //DB ERROR
         })
 }
+
 exports.readBloodGroupByID = (req, res, next) => {
     const id = req.query.id;
     let bcDetail = {}
     let bgDetail = {};
-    db.query(`SELECT * FROM bloodcenter 
-                WHERE blood_group = $1 ORDER BY blood_group ASC`, [id])
+
+    db.query(`SELECT bc.bc_id, bc.name,bc.locstate,bc.loclga,bc.qty 
+                FROM bloodcenter bc
+                WHERE bc.bg = $1
+                ORDER BY bg ASC`, [id])
         .then(bcresult => {
             // Send blood center extracted from database in response
-
             bcDetail = bcresult.rows
-            db.query(`SELECT bg, rhd FROM bloodgroup 
-                 WHERE bg_id = $1`, [id])
+            db.query(`SELECT bg.bg_id,bg.bg, bg.rhd
+                FROM bloodgroup bg
+                WHERE bg.bg_id = $1
+                ORDER BY bg ASC`, [id])
                 .then(bgresult => {
                     bgDetail = bgresult.rows
-                    console.log({ bc: bcDetail, bg: bgDetail })
-                    res.status(200).send({ bg: bgDetail, bc: bcDetail })
+                    console.log({ bcDetail, bgDetail })
+                    res.status(200).send({ bcDetail, bgDetail })
                 })
+        })
+        .catch(q_err => {
+            console.log(q_err.message)
+            res.status(500).send({ Error: q_err.message }) //DB ERROR
+        })
+}
 
 
-
-
+exports.readBooking = (req, res,) => {
+    const userId = req.body.users_Id
+    db.query(`SELECT bg.bg, bg.rhd, bc.name, bc.locstate, bc.loclga, bc.qty
+                FROM booking bk, bloodcenter bc, bloodgroup bg
+                WHERE (bk_id = bc_id) AND (bk.bg = bg_id) AND (bk.user=$1)`, [userId])
+        .then(result => {
+            // Send booking extracted from database in response
+            console.log(result.rows)
+            res.status(200).send(result.rows)
         })
         .catch(q_err => {
             console.log({ Error: q_err.message })

@@ -14,7 +14,7 @@ export function fetchBlood() {
         .catch(err => {
             return {
                 type: ACTION_TYPES.ERROR_CATCH,
-                payload: err.response.data.Error
+                payload: err.message
             }
         })
     return request
@@ -27,6 +27,47 @@ export async function fetchBloodbyId(bgId) {
             if (response.data)
                 return {
                     type: ACTION_TYPES.FETCH_BLOOD_GROUP_BY_ID,
+                    payload: { bcDetail: response.data.bcDetail, bgDetail: response.data.bgDetail }
+                }
+        })
+        .catch(err => {
+            return {
+                type: ACTION_TYPES.ERROR_CATCH,
+                payload: err.response.data.Error
+            }
+        })
+    return request
+}
+
+export async function addBooking(BookingInfo, userId) {
+    const bookingData = {
+        bookingData: BookingInfo,
+        userId: userId
+
+    }
+    const request = await axios.post(`${BLOODCENTER_SERVER}/addBooking`, bookingData)
+        .then(response => {
+            if (response.data)
+                return {
+                    type: ACTION_TYPES.ADD_BOOKING,
+                    payload: response.data
+                }
+        })
+        .catch(err => {
+            return {
+                type: ACTION_TYPES.ERROR_CATCH,
+                payload: err.response.data.Error
+            }
+        })
+    return request
+}
+
+export async function readBooking(user) {
+    const request = await axios.post(`${BLOODCENTER_SERVER}/readBooking`, user)
+        .then(response => {
+            if (response.data)
+                return {
+                    type: ACTION_TYPES.FECTCH_BOOKING,
                     payload: response.data
                 }
         })

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NaijaStates, trueorfalse, NaijaLGA, bloodGroup } from './data'
 import { useDispatch } from "react-redux";
-import { completeRegistration } from '../../../appStore/_actions/userAction'
+import { completeRegistration } from '../../appStore/_actions/userAction'
 
 
 /*==========================

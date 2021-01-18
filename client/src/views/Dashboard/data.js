@@ -1,10 +1,13 @@
 export const bgData = [
-    {
-        id: 1,
-        bg: 'A',
-        pn: '+',
-        qty: 40
-    }
+    { id: 1, bg: 'A', pn: '+' },
+    { id: 2, bg: 'A', pn: '-' },
+    { id: 3, bg: 'B', pn: '+' },
+    { id: 4, bg: 'B', pn: '-' },
+    { id: 5, bg: 'O', pn: '+' },
+    { id: 6, bg: 'O', pn: '-' },
+    { id: 7, bg: 'AB', pn: '+' },
+    { id: 1, bg: 'A', pn: '+' },
+
 ]
 
 export const testBookingData = [

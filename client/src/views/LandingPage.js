@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import CardList from '../../resuableComponents/CardList'
+import CardList from '../components/CardList'
 import { Table, CardTitle, CardText } from 'reactstrap'
 //import { bgData } from '../Dashboard/data'
-import { useSelector, useDispatch, useStore } from "react-redux";
-import { fetchBlood, } from '../../../appStore/_actions/BloodBankAction'
+import { useDispatch } from "react-redux";
+import { fetchBlood, } from '../appStore/_actions/BloodBankAction'
 
 
 const LandingPage = () => {
@@ -50,7 +50,7 @@ const LandingPage = () => {
                             return (
                                 < tr >
                                     <td>{item.bg}<sup>{item.rhd}</sup></td>
-                                    <td>{item.blood_qty} pints</td>
+                                    <td>{item.qty} pints</td>
                                 </tr>
                             )
                         })

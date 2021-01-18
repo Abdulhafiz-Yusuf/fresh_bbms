@@ -4,18 +4,18 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react'
 import { Card } from 'reactstrap';
 //PAGES
-import LandingPage from './components/views/pages/LandingPage';
-import BloodDetailPage from './components/views/pages/BloodDetailPage';
-import DonorForm from './components/views/pages/DonorForm';
-import MedCenter from './components/views/pages/MedCenter';
+import LandingPage from './views/LandingPage';
+import BloodDetailPage from './views/BloodDetailPage';
+import DonorForm from './views/DonorFormPage';
+import MedCenter from './views/MedCenterPage';
 
 //PAGE SECTIONS
-import NavBar from './components/views/pages/sections/NavBar';
-import Footer from './components/views/pages/sections/Footer';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 
 //DASHBOARD
-import UserDashBoard from './components/views/Dashboard/UserDashBoard';
+import UserDashBoard from './views/Dashboard/UserDashBoard';
 
 
 

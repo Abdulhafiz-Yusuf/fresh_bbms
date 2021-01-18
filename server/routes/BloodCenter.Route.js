@@ -7,5 +7,9 @@ const router = express.Router()
 
 router.get('/blood_by_id', BloodcenterController.readBloodGroupByID);
 router.get('/', BloodcenterController.readAllBloodGroup);
+router.post('/readBooking', BloodcenterController.readBooking);
+router.post('/addBooking', BloodcenterController.readBooking);
 
 module.exports = router
+
+

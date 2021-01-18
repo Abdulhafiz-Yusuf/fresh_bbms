@@ -12,15 +12,21 @@ exports.checkIfUserExistIndb = (req, res) => {
     if exist: return full user info
      else: return userExist false
     */
-    const email = req.body.user.email;
+    const email = req.body.email
     console.log(email)
-    db.query(`SELECT * FROM users
-              WHERE email=$1`, [email])
+    db.query(`SELECT users_id,username,email,email_verified,f_name,l_name,phone,user_loc_state,loc_lga,donor,
+                bg,rhd,qty,date
+            FROM users, bloodgroup
+            WHERE email=$1 AND bg_id = blood_group`, [email])
         .then(q_res => {
-            if (!q_res.rows) res.status(200).send({ userExist: false, user: 'User does not exist' });   //USER DOEST NOT EXIST
-            else res.status(200).send({ userExist: true, user: q_res.rows }) //USER EXIST
+            console.log(q_res.rows)
+            res.status(200).send({ userExist: true, user: q_res.rows })
         })
-        .catch(err => res.json(err)) //DB ERROR
+        // else res.status(200).send({ userExist: false }); //if User Doesn't Exist
+        .catch(q_err => {
+            console.log({ Error: q_err.message })
+            res.status(500).send({ Error: q_err.message }) //DB ERROR
+        })
 
 }
 exports.regCompletion = (req, res, next) => {
@@ -53,13 +59,16 @@ exports.regCompletion = (req, res, next) => {
                         })
                         console.log({ fullUserInfo: q_res.rows })
                     })
-                    .catch(q_err => res.json(q_err)) //DB ERROR
+                    .catch(q_err => {
+                        console.log({ Error: q_err.message })
+                        res.status(500).send({ Error: q_err.message }) //DB ERROR
+                    })
             }
 
         })
         .catch(q_err => {
-            res.json(q_err)//DB ERROR
-            console.log(q_err.message)
+            console.log({ Error: q_err.message })
+            res.status(500).send({ Error: q_err.message }) //DB ERROR
         })
 }
 // exports.userposts = async (req, res, next) => {

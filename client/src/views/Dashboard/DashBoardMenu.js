@@ -1,8 +1,8 @@
 import React from 'react'
-import { useSelector, useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button, Card } from 'reactstrap';
-import { checkifUserExist, fullUserInfoFromDb, viewPageAction } from '../../../appStore/_actions/userAction'
-import me from './me.jpg'
+import { viewPageAction } from '../../appStore/_actions/userAction'
+import me from '../../assets/me.jpg'
 function DashBoardMenu({ user }) {
     const dispatch = useDispatch();
     return (
@@ -10,7 +10,7 @@ function DashBoardMenu({ user }) {
             <Card className='text-danger  w-75 border d-flex justify-content-center align-items-center m-1 align-self-center'>
                 <img src={me} alt='Passport' className='border rounded-circle ' style={{ height: '190px', width: '150px' }} />
                 <div className='text-uppercase font-weight-bold'>{`${user.f_name} `} {user.l_name}</div>
-                <div>{user.phone}</div>
+                <div>+234 {user.phone}</div>
             </Card>
             <Button className='bg-danger m-2 text-light' onClick={() => dispatch(viewPageAction('profile'))}>
                 My profile

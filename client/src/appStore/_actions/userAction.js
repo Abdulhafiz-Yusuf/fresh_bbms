@@ -9,13 +9,26 @@ import { USER_SERVER } from '../../config.json';
 //=========================
 
 export function checkifUserExist(user) {
-    const request = axios.get(`${USER_SERVER}/checkIfUserExistInDB`, user)
+    const request = axios.post(`${USER_SERVER}/checkIfUserExistInDB`, user)
         .then(response => {
-            if (response.data.userExist)
+            /**If userExist is True
+             * NB: Else case is handle in the userDashboard Component. on If is handled below
+             */
+            if (response.data.userExist) {
+                /**return full user info to redux..... 
+                *since default value of userExist in redux is True, there is no need to return it again */
                 return {
                     type: ACTION_TYPES.USER_EXIST,
                     payload: { userExist: response.data.userExist, user: response.data.user }
                 }
+            }
+            else {
+                /**return userExist === false info to redux.....*/
+                return {
+                    type: ACTION_TYPES.USER_DOES_NOT_EXIST,
+                    payload: { userExist: response.data.userExist }
+                }
+            }
         })
         .catch(err => {
             return {
@@ -26,15 +39,10 @@ export function checkifUserExist(user) {
     return request
 }
 
-export function fullUserInfoFromDb(user) {
-    return {
-        type: ACTION_TYPES.GET_USER_FULL_INFO,
-        payload: user
-    }
-}
-export function completeRegistration(dataToSubmit) {
+
+export async function completeRegistration(dataToSubmit) {
     //Collect complete user info from 'complete registration page' then post to db and return full user info
-    const request = axios.post('http://localhost:9000/user/regCompletion', dataToSubmit)
+    const request = await axios.post(`${USER_SERVER}/regCompletion`, dataToSubmit)
         .then(response => {
             return ({
                 type: ACTION_TYPES.GET_USER_FULL_INFO,
@@ -56,6 +64,8 @@ export function clearError() {
         payload: undefined
     })
 }
+
+
 export function viewPageAction(page) {
     return ({
         type: ACTION_TYPES.VIEWPAGE,

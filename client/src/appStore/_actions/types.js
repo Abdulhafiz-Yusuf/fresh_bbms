@@ -8,10 +8,11 @@ export const GET_USER_FULL_INFO = 'getuserfullinfo'
 export const ERROR_CATCH = 'errorcatch'
 export const CLEAR_ERROR = 'clearerror'
 export const VIEWPAGE = 'viewpage'
-
+export const USER_DOES_NOT_EXIST = 'userdoesnotexist'
 //=========================
 //  bloodcenter types
 //=========================
 export const FETCH_BLOOD_GROUP = 'fetch_blood_group'
 export const FETCH_BLOOD_GROUP_BY_ID = 'fetch_blood_group_by_id'
-
+export const FECTCH_BOOKING = 'fetch_booking'
+export const ADD_BOOKING = 'add_booking'

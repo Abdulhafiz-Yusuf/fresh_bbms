@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useSelector } from "react-redux";
 import { Table, Card, Button } from 'reactstrap'
 
-function BookingPage({ booking }) {
-    useEffect(() => {
-        console.log(booking)
+function BookingPage() {
+    const booking = useSelector(state => state.BloodBankReducer.booking);
 
-    }, [booking])
     return (
 
         <div className='w-100 d-flex flex-row justify-content-center align-items-center' >
-            {booking.length === 0 ?
+            {!booking ?
                 <h2 className='text-danger text-center mb-3 font-weight-bold'> Sorry!! You have no Booked Items .... </h2>
                 :
-
-
                 <Card className='text-danger'>
                     <h2 className='text-danger text-center mb-3 font-weight-bold'> Booked Items</h2>
                     <Table className='text-danger' bordered hover striped>
@@ -29,9 +26,9 @@ function BookingPage({ booking }) {
                         <tbody>
                             {booking.map((book, index) => {
                                 return (< tr >
-                                    <th scope="row">{book.bg}<sup>{book.pn}</sup></th>
-                                    <td>{book.blood_center_name}</td>
-                                    <td>{book.location}</td>
+                                    <th scope="row">{book.bg}<sup>{book.rhd}</sup></th>
+                                    <td>{book.name}</td>
+                                    <td>{book.loclga}, {book.locstate}</td>
                                     <td>{book.qty}</td>
                                     <td>
                                         {book.payment_status}

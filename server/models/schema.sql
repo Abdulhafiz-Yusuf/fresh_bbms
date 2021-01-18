@@ -2,8 +2,8 @@ CREATE TABLE bloodgroup (
   bg_id SERIAL PRIMARY KEY,
   bg VARCHAR(255),
   rhd VARCHAR(255),
-  blood_qty BIGINT,
-  date_created TIMESTAMP
+  qty BIGINT,
+  c_date_created TIMESTAMP --created Date
 );
 
 
@@ -14,7 +14,7 @@ CREATE TABLE users (
   email_verified BOOLEAN,
   f_name VARCHAR(255) ,
   l_name VARCHAR(255) ,
-  date_created DATE,
+  c_date_created TIMESTAMP --created Date
   last_login TIMESTAMP,
   phone BIGINT,
   user_loc_state VARCHAR(255),
@@ -26,29 +26,30 @@ CREATE TABLE users (
 
 CREATE TABLE bloodcenter (
   bc_id SERIAL PRIMARY KEY,
-  bc_name VARCHAR(255),
-  bc_loc_state VARCHAR(255),
-  bc_loc_lga VARCHAR(255),
-  blood_group int REFERENCES blood_group(bg_id),
-  date_created TIMESTAMP,
+  name VARCHAR(255),  -- name of the center
+  locstate VARCHAR(255),  -- location State 
+  loclga VARCHAR(255),  -- location L.G.A
+  bg int REFERENCES blood_group(bg_id), --blood group
+  qty INT,  -- blood Quantity
+  c_date_created TIMESTAMP --created Date
   );
 
 CREATE TABLE booking (
   bk_id SERIAL PRIMARY KEY,
-  blood_group int REFERENCES blood_group(bg_id),
-  blood_center int REFERENCES bloodcenter(bc_id),
-  user INT REFERENCES users(users_id),
-  payment_status int REFERENCES bloodcenter(p_id),
-  date_created TIMESTAMP
+  bg int REFERENCES blood_group(bg_id), -- blood group
+  blood_center int REFERENCES bloodcenter(bc_id),  -- blood center 
+  user INT REFERENCES users(users_id),  -- user
+  p_status int REFERENCES payment(p_id), -- payment state
+  c_date_created TIMESTAMP --created Date
 );
 
 
 CREATE TABLE payment (
   p_id SERIAL PRIMARY KEY,
-  payment_status BOOLEAN,
-  blood_center INT REFERENCES bloodcenter(bc_id),
-  user INT REFERENCES users(users_id),
-  date_created TIMESTAMP
+  p_status BOOLEAN, -- payment status
+  blood_center INT REFERENCES bloodcenter(bc_id), -- blood center 
+  user INT REFERENCES users(users_id), -- user 
+  c_date_created TIMESTAMP --created Date
 );
 
 

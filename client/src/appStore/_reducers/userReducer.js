@@ -5,21 +5,25 @@ import * as ACTION_TYPES from '../_actions/types';
 //=========================
 const initialState = {
     UserExist: true,
-    User: {},
+    user: null,
     Error: "Error Availabe",
-    ViewPage: 'profile'
+    ViewPage: 'profile',
+    bg: [],
 }
 
 export default function UserReducer(state = initialState, action) {
     switch (action.type) {
         case ACTION_TYPES.USER_EXIST:
-            return { ...state, userExist: action.payload.userExist, User: action.payload.user }
+            return { ...state, user: action.payload.user }
+
+        case ACTION_TYPES.USER_DOES_NOT_EXIST:
+            return { ...state, UserExist: action.payload.UserExist }
         case ACTION_TYPES.GET_USER_FULL_INFO:
-            return { ...state, User: action.payload.user }
+            return { ...state, UserExist: action.payload.user }
         // case ACTION_TYPES.USER_FROM_DB:
-        //     return { ...state, User: action.payload.user, UserExist: action.payload.userExist }
+        //     return { ...state, user: action.payload.user, UserExist: action.payload.userExist }
         case ACTION_TYPES.ERROR_CATCH:
-            return { ...state, User: action.payload, Error: action.payload.Error }
+            return { ...state, user: action.payload, Error: action.payload }
         case ACTION_TYPES.CLEAR_ERROR:
             return { ...state, Error: action.payload }
         case ACTION_TYPES.VIEWPAGE:

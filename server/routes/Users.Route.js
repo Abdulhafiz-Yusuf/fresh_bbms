@@ -8,7 +8,7 @@ const router = express.Router()
 
 const UserController = require('../controllers/User.Controller');
 
-router.get('/checkIfUserExistIndb', UserController.checkIfUserExistIndb)
+router.post('/checkIfUserExistInDB', UserController.checkIfUserExistIndb)
 router.post('/regCompletion', UserController.regCompletion)
 // router.get('/getuserFullInfo', UserController.getuserFullInfo)
 module.exports = router

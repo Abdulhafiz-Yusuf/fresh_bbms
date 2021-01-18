@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Button } from 'reactstrap';
-import LoginButton from '../../../resuableComponents/Auth0LoginButton';
-import LogoutButton from '../../../resuableComponents/Auth0LogoutButton';
+import LoginButton from '../components/Auth0LoginButton';
+import LogoutButton from '../components/Auth0LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
 // import backgroundImage from './blood.jpeg'
 const NavBar = (props) => {
