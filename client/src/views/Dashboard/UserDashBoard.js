@@ -11,7 +11,8 @@ import DashBoardMenu from "./DashBoardMenu";
 import Loading from '../../components/Loading.js'
 import { readBooking } from "../../appStore/_actions/BloodBankAction";
 
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import DashBoardView from "./DashBoardView";
 /*
 =========================
   USERDASHBOARD PAGE
@@ -66,6 +67,8 @@ export default function UserDashBoard() {
                 <DashBoardMenu user={stateUser[0]} />
                 <div className='d-flex justify-content-center border border-danger flex-grow-1'>
 
+
+                    {/* <DashBoardView user_id={stateUser[0].users_id} user={stateUser[0]} bg={stateUser[0]} /> */}
                     {stateViewPage === 'booking' ?
                         // user & userExist
                         <BookingPage user_id={stateUser[0].users_id} />

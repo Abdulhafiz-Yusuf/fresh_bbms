@@ -2,28 +2,53 @@ import React, { useEffect } from 'react';
 import { Table, Card, Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBooking, fetchBloodbyId } from '../appStore/_actions/BloodBankAction';
+import { viewPageAction } from '../appStore/_actions/userAction';
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 export default function BloodDetailPage(props) {
     /*
-    TASK
+TASK
     ====
     1.  Use useEffect to fetch bcDetail with id equal to id in props.match.params.bgId 
     2.  Use bcDetail.bg to fetch bcDetailPage Data where bg === req.body.bcDetail.bg
     3.  Display bcDetailPage Data in tables
     */
+
+    let history = useHistory();
     const dispatch = useDispatch()
     const bgId = props.match.params.bgId;
     const stateUser = useSelector(state => state.UserReducer.user);
     const booking = useSelector(state => state.BloodBankReducer.booking);
 
+    // const { user, loginWithRedirect } = useAuth0;
+    const [user, setUser] = useState({
+        users_id: 1,
+        email: 'talk2abdulhafiz@gmail.com'
+    })
     useEffect(() => {
         dispatch(fetchBloodbyId(bgId))
     }, [dispatch, bgId])
 
     const bcDetail = useSelector(state => state.BloodBankReducer.bcDetail);
     const bgDetail = useSelector(state => state.BloodBankReducer.bgDetail);
-    console.log({ bg: bcDetail, bc: bcDetail })
+
+
+    const bookingHandler = (e) => {
+        const id = e.target.id;
+        console.log({ bcDetail: bcDetail[id], user: user, bgDetail: bgDetail[id] })
+        if (user) {
+            dispatch(addBooking(user.users_id, bcDetail[id], bgDetail[id]))
+                .then(response => {
+                    if (response.payload) {
+                        alert('Booked Successfully')
+                        history.push('/testPage')
+                    }
+                }
+                )
+        }
+        else { alert(id) }
+    }
     return (
         <div className=' container mt-5 mb-5' >
             <div style={{ height: '100px' }}></div>
@@ -54,11 +79,14 @@ export default function BloodDetailPage(props) {
                                 {bcDetail.map((bg, index) => {
                                     return (
                                         < tr key={index}>
-                                            <td>{bg.name}</td>
+                                            <td>{bg.centername}</td>
                                             <td>{bg.loclga} L.G.A,<br />{bg.locstate} State</td>
                                             <td>{bg.qty}</td>
                                             <td >
-                                                <Button className='ml-2 text-light bg-danger font-weight-bold'>Book Now</Button>
+                                                <Button
+                                                    id={index}
+                                                    onClick={bookingHandler}
+                                                    className='ml-2 text-light bg-danger font-weight-bold'>Book Now</Button>
 
                                             </td>
                                         </tr>

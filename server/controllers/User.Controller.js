@@ -15,7 +15,7 @@ exports.checkIfUserExistIndb = (req, res) => {
     const email = req.body.email
     console.log(email)
     db.query(`SELECT users_id,username,email,email_verified,f_name,l_name,phone,user_loc_state,loc_lga,donor,
-                bg,rhd,qty,date
+                bg,rhd,qty,postdate
             FROM users, bloodgroup
             WHERE email=$1 AND bg_id = blood_group`, [email])
         .then(q_res => {

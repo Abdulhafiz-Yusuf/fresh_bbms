@@ -39,17 +39,12 @@ export async function fetchBloodbyId(bgId) {
     return request
 }
 
-export async function addBooking(BookingInfo, userId) {
-    const bookingData = {
-        bookingData: BookingInfo,
-        userId: userId
-
-    }
-    const request = await axios.post(`${BLOODCENTER_SERVER}/addBooking`, bookingData)
+export async function readBooking(user) {
+    const request = await axios.post(`${BLOODCENTER_SERVER}/readBooking`, user)
         .then(response => {
             if (response.data)
                 return {
-                    type: ACTION_TYPES.ADD_BOOKING,
+                    type: ACTION_TYPES.FECTCH_BOOKING,
                     payload: response.data
                 }
         })
@@ -62,13 +57,20 @@ export async function addBooking(BookingInfo, userId) {
     return request
 }
 
-export async function readBooking(user) {
-    const request = await axios.post(`${BLOODCENTER_SERVER}/readBooking`, user)
+
+
+export async function addBooking(userId, bcDetail, bgDetail) {
+    const bookData = {
+        bc_id: bcDetail.bc_id,
+        bg_id: bgDetail.bg_id,
+        users_id: userId
+    }
+    const request = await axios.post(`${BLOODCENTER_SERVER}/addBooking`, bookData)
         .then(response => {
             if (response.data)
                 return {
-                    type: ACTION_TYPES.FECTCH_BOOKING,
-                    payload: response.data
+                    type: ACTION_TYPES.ADD_BOOKING,
+                    payload: response.data.success
                 }
         })
         .catch(err => {

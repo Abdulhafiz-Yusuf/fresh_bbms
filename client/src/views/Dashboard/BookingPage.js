@@ -27,7 +27,7 @@ function BookingPage() {
                             {booking.map((book, index) => {
                                 return (< tr >
                                     <th scope="row">{book.bg}<sup>{book.rhd}</sup></th>
-                                    <td>{book.name}</td>
+                                    <td>{book.centername}</td>
                                     <td>{book.loclga}, {book.locstate}</td>
                                     <td>{book.qty}</td>
                                     <td>

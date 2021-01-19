@@ -9,7 +9,7 @@ const CardComp = ({ bgData }) => {
                 <CardTitle className='d-flex border rounded-circle justify-content-center align-items-center bg-danger m-1' style={{ width: '100px', height: '100px' }}>
                     <h1 className='text-center font-weight-bolder text-light' style={{ fontSize: '45px' }}>{bgData.bg}<sup>{bgData.rhd}</sup></h1>
                 </CardTitle>
-                <div className='text-center'> Available Quantity: <h2>{bgData.blood_qty} pints</h2> </div>
+                <div className='text-center'> Available Quantity: <h2>{bgData.qty} pints</h2> </div>
             </Button >
 
         </Link >

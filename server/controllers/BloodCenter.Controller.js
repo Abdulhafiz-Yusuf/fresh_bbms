@@ -22,7 +22,7 @@ exports.readBloodGroupByID = (req, res, next) => {
     let bcDetail = {}
     let bgDetail = {};
 
-    db.query(`SELECT bc.bc_id, bc.name,bc.locstate,bc.loclga,bc.qty 
+    db.query(`SELECT bc.bc_id, bc.centername,bc.locstate,bc.loclga,bc.qty 
                 FROM bloodcenter bc
                 WHERE bc.bg = $1
                 ORDER BY bg ASC`, [id])
@@ -48,13 +48,34 @@ exports.readBloodGroupByID = (req, res, next) => {
 
 exports.readBooking = (req, res,) => {
     const userId = req.body.users_Id
-    db.query(`SELECT bg.bg, bg.rhd, bc.name, bc.locstate, bc.loclga, bc.qty
+    console.log(userId)
+    db.query(`SELECT bg.bg, bg.rhd, bc.centername, bc.locstate, bc.loclga, bc.qty
                 FROM booking bk, bloodcenter bc, bloodgroup bg
-                WHERE (bk_id = bc_id) AND (bk.bg = bg_id) AND (bk.user=$1)`, [userId])
+                WHERE (bk.bg = bg_id) AND (bk.myusers=$1)`, [userId])
         .then(result => {
             // Send booking extracted from database in response
             console.log(result.rows)
             res.status(200).send(result.rows)
+        })
+        .catch(q_err => {
+            console.log({ Error: q_err.message })
+            res.status(500).send({ Error: q_err.message }) //DB ERROR
+        })
+}
+
+
+exports.addBooking = (req, res,) => {
+    const values = [
+        req.body.users_id,
+        req.body.bc_id,
+        req.body.bg_id,
+    ]
+
+    db.query(`INSERT INTO booking(myusers, bc,bg,postdate)
+                VALUES($1,$2,$3,NOW())`, values)
+        .then(result => {
+            // Send booking extracted from database in response
+            res.status(200).send({ success: true })
         })
         .catch(q_err => {
             console.log({ Error: q_err.message })
