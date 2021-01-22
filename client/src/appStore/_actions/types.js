@@ -9,6 +9,7 @@ export const ERROR_CATCH = 'errorcatch'
 export const CLEAR_ERROR = 'clearerror'
 export const VIEWPAGE = 'viewpage'
 export const USER_DOES_NOT_EXIST = 'userdoesnotexist'
+export const MAKEADONOR = 'makeadonor'
 //=========================
 //  bloodcenter types
 //=========================

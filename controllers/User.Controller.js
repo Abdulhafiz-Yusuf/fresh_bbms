@@ -71,16 +71,16 @@ exports.regCompletion = (req, res, next) => {
             res.status(500).send({ Error: q_err.message }) //DB ERROR
         })
 }
-// exports.userposts = async (req, res, next) => {
-//     const user_id = req.query.user_id
-//     console.log(user_id)
-//     db.query(`SELECT * FROM posts
-//               WHERE user_id=$1`, [user_id],
-//         (q_err, q_res) => {
-//             res.json(q_res.rows)
-//         })
+exports.makeADonor = async (req, res, next) => {
+    const user_id = req.query.user_id
+    console.log(user_id)
+    //     db.query(`SELECT * FROM posts
+    //               WHERE user_id=$1`, [user_id],
+    //         (q_err, q_res) => {
+    //             res.json(q_res.rows)
+    //         })
 
-// }
+}
 // exports.otheruserprofilefromdb = async (req, res, next) => {
 //     // const email = [ "%" + req.query.email + "%"]
 //     const username = String(req.query.username)

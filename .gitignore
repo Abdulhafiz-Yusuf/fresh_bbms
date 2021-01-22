@@ -3,11 +3,11 @@
 
 #configs
 /client/src/config.json
-/server/config.json
+/config.json
 
 # dependencies
 /client/node_modules
-/server/node_modules
+/node_modules
 /.pnp
 .pnp.js
 

@@ -21,7 +21,7 @@ TASK
     const stateUser = useSelector(state => state.UserReducer.user);
     const booking = useSelector(state => state.BloodBankReducer.booking);
 
-    // const { user, loginWithRedirect } = useAuth0;
+    //const { user, loginWithRedirect } = useAuth0;
     const [user, setUser] = useState({
         users_id: 1,
         email: 'talk2abdulhafiz@gmail.com'
@@ -41,13 +41,17 @@ TASK
             dispatch(addBooking(user.users_id, bcDetail[id], bgDetail[id]))
                 .then(response => {
                     if (response.payload) {
-                        alert('Booked Successfully')
+                        dispatch(viewPageAction('booking'))
                         history.push('/testPage')
+                        alert('Booked Successfully')
+
                     }
                 }
                 )
         }
-        else { alert(id) }
+        else {
+            //      loginWithRedirect()
+        }
     }
     return (
         <div className=' container mt-5 mb-5' >

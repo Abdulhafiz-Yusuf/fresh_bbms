@@ -9,7 +9,7 @@ export const bgData = [
     { id: 1, bg: 'A', pn: '+' },
 
 ]
-
+//"IROCU-PWD": "QZE/m&i+w=y"N2T"
 export const testBookingData = [
     {
         bg: 'O',
