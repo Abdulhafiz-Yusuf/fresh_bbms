@@ -6,16 +6,16 @@ import { Card } from 'reactstrap';
 //PAGES
 import LandingPage from './views/LandingPage';
 import BloodDetailPage from './views/BloodDetailPage';
-import DonorForm from './views/DonorFormPage';
 import MedCenter from './views/MedCenterPage';
 
 //PAGE SECTIONS
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
+import NavBar from './views/NavBar';
+import Footer from './views/Footer';
 
 
 //DASHBOARD
 import UserDashBoard from './views/Dashboard/UserDashBoard';
+import SearchDonor from './views/SearchDonor';
 
 
 
@@ -47,7 +47,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/blood_details/:bgId" component={BloodDetailPage} />
-        <Route path="/:userId/form" component={DonorForm} />
+        <Route path="/:userId/form" component={SearchDonor} />
         <Route path="/med-center" component={MedCenter} />
         <Route path="/callback" component={UserDashBoard} />
         <Route path="/testPage" component={UserDashBoard} />

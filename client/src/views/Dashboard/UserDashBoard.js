@@ -11,8 +11,7 @@ import DashBoardMenu from "./DashBoardMenu";
 import Loading from '../../components/Loading.js'
 import { readBooking } from "../../appStore/_actions/BloodBankAction";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import DashBoardView from "./DashBoardView";
+
 /*
 =========================
   USERDASHBOARD PAGE

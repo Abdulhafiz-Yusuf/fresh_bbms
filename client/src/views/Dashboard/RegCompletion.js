@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Card, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { NaijaStates, trueorfalse, NaijaLGA, bloodGroup } from './data'
+import { NaijaStates, trueorfalse, NaijaLGA, bloodGroup } from '../../data'
 import { useDispatch } from "react-redux";
 import { completeRegistration } from '../../appStore/_actions/userAction'
 
@@ -85,7 +85,7 @@ export default function RegCompletion(props) {
                     </FormGroup>
                     <FormGroup>
                         <Label for="state">L.G.A</Label>
-                        <Input type="select" name="select" value={profile.loc_lga} onChange={handleChange}>
+                        <Input type="select" name="loc_lga" value={profile.loc_lga} onChange={handleChange}>
                             {LGAs.map((lga, index) => (
                                 <option key={index} value={lga}> {lga}</option>
                             ))

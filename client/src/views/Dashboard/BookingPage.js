@@ -29,16 +29,17 @@ function BookingPage() {
                             </thead>
                             <tbody>
                                 {booking.map((book, index) => {
-                                    return (< tr >
-                                        <th scope="row">{book.bg}<sup>{book.rhd}</sup></th>
-                                        <td>{book.centername}</td>
-                                        <td>{book.loclga}, {book.locstate}</td>
-                                        <td>{book.qty}</td>
-                                        <td>
-                                            {book.payment_status}
-                                            <Button className='ml-2 text-light bg-danger font-weight-bold'>Pay Now</Button>
-                                        </td>
-                                    </tr>
+                                    return (
+                                        < tr key={index}>
+                                            <th scope="row">{book.bg}<sup>{book.rhd}</sup></th>
+                                            <td>{book.centername}</td>
+                                            <td>{book.loclga}, {book.locstate}</td>
+                                            <td>{book.qty}</td>
+                                            <td>
+                                                {book.payment_status}
+                                                <Button className='ml-2 text-light bg-danger font-weight-bold'>Pay Now</Button>
+                                            </td>
+                                        </tr>
                                     )
                                 })
 

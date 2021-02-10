@@ -91,3 +91,21 @@ export async function makeADonor(userId) {
         })
     return request
 }
+
+
+export async function searchDonor(userId) {
+    const request = await axios.put(`${USER_SERVER}/makeADonor`, userId)
+        .then(response => {
+            return ({
+                type: ACTION_TYPES.MAKEADONOR,
+                payload: response.data
+            })
+        })
+        .catch(err => {
+            return {
+                type: ACTION_TYPES.ERROR_CATCH,
+                payload: err.message
+            }
+        })
+    return request
+}

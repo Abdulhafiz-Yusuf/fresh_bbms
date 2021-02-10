@@ -28,10 +28,10 @@ const DonorForm = () => {
                 <>
                     <Card className='container w-50 shadow-lg p-3 d-flex flex-column align-items-center'>
                         <div className='d-flex justify-content-center '>
-                            <h2>Do You Want to be Donor Now</h2>
+                            <h2 className='text-center'>Do You Want to be Donor Now</h2>
                         </div>
 
-                        <Button color='success' onClick={donorbtnHandler} className='w-50 justify-self-center' >Make a Donor Now!</Button>
+                        <Button color='success' onClick={donorbtnHandler} className='w-50 justify-self-center' >Make me a Donor Now!</Button>
 
                     </Card >
                 </> :

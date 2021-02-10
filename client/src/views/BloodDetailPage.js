@@ -3,9 +3,10 @@ import { Table, Card, Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBooking, fetchBloodbyId } from '../appStore/_actions/BloodBankAction';
 import { viewPageAction } from '../appStore/_actions/userAction';
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom'
+import Loading from '../components/Loading';
 export default function BloodDetailPage(props) {
     /*
 TASK
@@ -18,8 +19,8 @@ TASK
     let history = useHistory();
     const dispatch = useDispatch()
     const bgId = props.match.params.bgId;
-    const stateUser = useSelector(state => state.UserReducer.user);
-    const booking = useSelector(state => state.BloodBankReducer.booking);
+    // const stateUser = useSelector(state => state.UserReducer.user);
+    // const booking = useSelector(state => state.BloodBankReducer.booking);
 
     //const { user, loginWithRedirect } = useAuth0;
     const [user, setUser] = useState({
@@ -58,7 +59,7 @@ TASK
             <div style={{ height: '100px' }}></div>
 
             {bgDetail.length === 0 & bcDetail.length === 0 ?
-                <h2 className='text-danger text-center mb-3 font-weight-bold'>                    Loading ....</h2>
+                <Loading />
                 :
                 bgDetail.length > 0 & bcDetail.length === 0 ?
                     <h2 className='text-danger text-center mb-3 font-weight-bold'>

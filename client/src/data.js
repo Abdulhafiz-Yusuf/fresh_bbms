@@ -6,77 +6,23 @@ export const bgData = [
     { id: 5, bg: 'O', pn: '+' },
     { id: 6, bg: 'O', pn: '-' },
     { id: 7, bg: 'AB', pn: '+' },
-    { id: 1, bg: 'A', pn: '+' },
+
 
 ]
-//"IROCU-PWD": "QZE/m&i+w=y"N2T"
-export const testBookingData = [
-    {
-        bg: 'O',
-        pn: '+',
-        blood_center_id: '1',
-        blood_center_name: 'National Blood Center Abuja',
-        location: 'FCT, Abuja',
-        qty: '20',
-        payment_status: 'No',
-        date_created: '12-12-2020',
-    },
-    {
-        bg: 'O',
-        pn: '+',
-        blood_center_id: '1',
-        blood_center_name: 'National Blood Center Abuja',
-        location: 'FCT, Abuja',
-        qty: '20',
-        payment_status: 'No',
-        date_created: '12-12-2020',
-    },
-    {
-        bg: 'O',
-        pn: '+',
-        blood_center_id: '1',
-        blood_center_name: 'National Blood Center Abuja',
-        location: 'FCT, Abuja',
-        qty: '20',
-        payment_status: 'No',
-        date_created: '12-12-2020',
-    },
-    {
-        bg: 'O',
-        pn: '+',
-        blood_center_id: '1',
-        blood_center_name: 'National Blood Center Abuja',
-        location: 'FCT, Abuja',
-        qty: '20',
-        payment_status: 'No',
-        date_created: '12-12-2020',
-    }
-
-]
-export const testUserData = {
-    users_id: 1,
-    username: 'Yushaf',
-    f_name: 'Abdulhafiz',
-    l_name: 'Yusuf',
-    date_created: '12-12-2020',
-    last_login: '12-12-2020',
-    phone: '08132652465',
-    user_loc_state: 'Kaduna',
-    loc_lga: 'Kaduna North',
-    donor: 'Yes',
-    bg: 'O - positive(O +)'
-}
 export const trueorfalse = [
     { key: 'Yes', value: true },
     { key: 'No', value: false },]
+
 export const bloodGroup = ['A - positive(A +)', 'A - negative(A -)', 'B - positive(B +)', 'B - negative(B -)',
     'AB - positive(AB +)', 'AB - negative(AB -)', 'O - positive(O +)', 'O - negative(O -)']
+
 export const NaijaStates =
-    ['Abia', 'Adamawa', 'AkwaIbom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'CrossRiver',
+    ['Select', 'Abia', 'Adamawa', 'AkwaIbom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'CrossRiver',
         'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'FCT', 'Gombe', 'Imo', 'Jigawa', 'Kaduna',
         'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo',
         'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara']
 export const NaijaLGA = {
+    Select: [],
     Abia: [
         "Aba North",
         "Aba South",

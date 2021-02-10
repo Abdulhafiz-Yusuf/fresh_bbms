@@ -11,16 +11,16 @@ import Store from './appStore/Store'
 
 //AUTH0
 import { Auth0Provider } from "@auth0/auth0-react";
-import config from "./config.json";
+
 
 ReactDOM.render(
 
   <Auth0Provider
-    domain={config.AUTH0_DOMAIN}
-    clientId={config.AUTH0_CLIENT_ID}
-    redirectUri={config.REDUIRECT_URI}
+    domain={process.env.REACT_APP_AUTH0_DOMAIN}
+    clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+    redirectUri={process.env.REACT_APP_REDUIRECT_URI}
     //redirectUri={window.location.origin}
-    audience={config.AUDIENCE}
+    audience={process.env.REACT_APP_AUDIENCE}
   >
     <Provider store={Store} >
       <App />

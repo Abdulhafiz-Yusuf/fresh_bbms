@@ -33,15 +33,16 @@ const NavBar = (props) => {
                                 </Button>
                             </li>
                             <li className="nav-item">
-                                <Button color='danger'>
-                                    <Link className="nav-link active text-light font-weight-bold" to="/:userId/form">Become a Donor</Link>
-                                </Button>
-                            </li>
-                            <li className="nav-item">
                                 <Button color='danger '>
                                     <Link className="nav-link active text-light font-weight-bold" to="/med-center">Medical Center</Link>
                                 </Button>
                             </li>
+                            <li className="nav-item">
+                                <Button color='danger'>
+                                    <Link className="nav-link active text-light font-weight-bold" to="/:userId/form">Find a Donor</Link>
+                                </Button>
+                            </li>
+
                             <li className="nav-item">
                                 <Button color='danger '>
                                     <Link className="nav-link active text-light font-weight-bold" to='/testPage'>Testing Page</Link>
