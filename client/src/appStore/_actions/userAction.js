@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as ACTION_TYPES from './types';
-import { USER_SERVER } from '../../config.json';
+import { USER_SERVER } from '../../Config.json';
 
 
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as ACTION_TYPES from './types';
-import { BLOODCENTER_SERVER } from '../../config.json';
+import { BLOODCENTER_SERVER } from '../../Config.json';
 
 export function fetchBlood() {
     const request = axios.get(`${BLOODCENTER_SERVER}/`)
