@@ -29,12 +29,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-if (process.env.NODE_ENV === "production") {
-  //server static content
-  //npm run build
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
-
+// if (process.env.NODE_ENV === "production") {
+//   //server static content
+//   //npm run build
+//   app.use(express.static(path.join(__dirname, "client/build")));
+// }
+app.use(express.static(path.join(__dirname, "client/build")));
 //ROUTES
 // simple route
 app.get("/", (req, res) => {

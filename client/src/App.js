@@ -17,11 +17,6 @@ import Footer from './views/Footer';
 import UserDashBoard from './views/Dashboard/UserDashBoard';
 import SearchDonor from './views/SearchDonor';
 
-//const { ipcRenderer, } = window.require('electron');
-
-const electron = window.require("electron");
-// // // //const fs = electron.remote.require('fs');
-const ipcRenderer = electron.ipcRenderer;
 
 /*=====
 APP.JS
