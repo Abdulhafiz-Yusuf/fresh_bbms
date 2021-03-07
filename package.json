@@ -5,7 +5,10 @@
   "homepage": "https://abdulhafiz-yusuf.github.io/fresh_bbms/",
   "scripts": {
     "start": "nodemon ./bin/www",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "heroku-postbuild": "cd client && yarn && yarn run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "my-deploy": "gh-pages cd client && yarn && yarn run build"
   },
   "engines": {
     "node": "14.15.3"
