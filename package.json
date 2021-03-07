@@ -7,8 +7,9 @@
     "start": "nodemon ./bin/www",
     "heroku-postbuild": "cd client && yarn && yarn run build",
     "predeploy": "npm run build",
+    "build": "react-script-build",
     "deploy": "gh-pages -d build",
-    "my-deploy": "gh-pages cd client && yarn && yarn run build"
+    "my-deploy": "gh-pages -d heroku-postbuild"
   },
   "engines": {
     "node": "14.15.3"
